@@ -1,0 +1,28 @@
+name       : motif
+version    : 2.3.8
+release    : 1
+source     :
+    - https://sourceforge.net/projects/motif/files/Motif%202.3.8%20Source%20Code/motif-2.3.8.tar.gz : 859b723666eeac7df018209d66045c9853b50b4218cecadb794e2359619ebce7
+license    : LGPL-2.1-or-later
+summary    : Motif released as open source software under LGPL v2.1
+component  : desktop.motif
+builddeps  :
+    - libx11-devel
+    - libxt-devel
+    - libxext-devel
+    - libxft-devel
+    - freetype2-devel
+    - libxpm-devel
+    - libxres-devel
+    - libxmu-devel
+    - xbitmaps
+    - libjpeg-turbo-devel
+    - fontconfig
+description: |
+    Motif is a freely available source code distribution for the Motif user interface component toolkit. Motif 2.3.8 is an updated version of Open Motif 2.3 and is a major bug fix release.
+setup      : |
+   %configure
+build      : |
+    %make
+install    : |
+    %make_install

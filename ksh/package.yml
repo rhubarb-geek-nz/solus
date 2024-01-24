@@ -1,0 +1,22 @@
+name       : ksh
+version    : 1.0.0
+release    : 1
+source     :
+    - https://github.com/ksh93/ksh/archive/refs/tags/v1.0.0-beta.2.tar.gz : d8678d23c3c9633a03e4fc895e604cdd0af2ff006d0268579b3a29beddfb8463
+license    : GPL-3.0-or-later
+summary    : ksh 93u+m 1.0.0-beta.2
+component  : system.base
+description: |
+    KSH-93 is the most recent version of the KornShell Language described in "The KornShell Command and Programming Language," by Morris Bolsky and David Korn of AT&T Bell Laboratories, ISBN 0-13-182700-6. The KornShell is a shell programming language, which is upward compatible with "sh" (the Bourne Shell), and is intended to conform to the IEEE P1003.2/ISO 9945.2 Shell and Utilities standard. KSH-93 provides an enhanced programming environment in addition to the major command-entry features of the BSD shell "csh". With KSH-93, medium-sized programming tasks can be performed at shell-level without a significant loss in performance. In addition, "sh" scripts can be run on KSH-93 without modification.
+setup      : |
+    pwd
+build      : |
+    pwd
+    bin/package make
+install    : |
+    pwd
+    ls -l arch/*/src/cmd/ksh93/ksh
+    install -d $installdir/bin
+    install -d $installdir/usr/share/man/man1
+    install -m 00555 arch/*/src/cmd/ksh93/ksh $installdir/bin
+    install -m 00444 src/cmd/ksh93/sh.1 $installdir/usr/share/man/man1/ksh.1

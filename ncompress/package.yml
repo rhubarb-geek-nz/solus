@@ -1,0 +1,19 @@
+name       : ncompress
+version    : 5.0
+release    : 16
+source     :
+    - https://github.com/vapier/ncompress/archive/refs/tags/v5.0.tar.gz : 96ec931d06ab827fccad377839bfb91955274568392ddecf809e443443aead46
+license    : Unlicense
+summary    : a fast, simple LZW file compressor
+component  : system.base
+description: |
+    This is (N)compress. It is an improved version of compress 4.1. Compress is a fast, simple LZW file compressor. Compress does not have the highest compression rate, but it is one of the fastest programs to compress data. Compress is the defacto standard in the UNIX community for compressing files. (N)compress 4.2 introduced a special, fast compression hash algorithm. This algorithm uses more memory than the old hash table. If you don't want the faster hash table algorithm set 'Memory free for compress' below 800000. Starting with compress 3.0, the output format changed in a backwards incompatible way. This is not a big deal as compress 3.0 was first released in Jan 1985, while the first release of compress was available less than a year prior. There shouldn't be any need to produce files that only older versions of compress would accept. Newer versions of compress are still able to handle the output of older versions though -- i.e. compress 3.0+ is able to decompress files produced by compress 2.0 and older.
+setup      : |
+    pwd
+build      : |
+    %make
+install    : |
+    make install "DESTDIR=$installdir"
+    mkdir $installdir/usr/bin
+    mv $installdir/usr/local/bin/compress $installdir/usr/bin
+    rm -rf $installdir/usr/local
